@@ -14,18 +14,13 @@ npm install -g @feizheng/topics2keywords
 ```
 
 ~~~
-Usage: topics2keywords [options]
+Usage: t2k [options]
 
 Options:
-  -V, --version          output the version number
-  -d, --debug            only show cmds, but not clean.
-  -l, --local            clean scope to local(default).
-  -r, --remote           clean scope to remote.
-  -f, --filter <string>  clean by filter.(eg: -f feature/aric)
-  -i, --interactive      interactive operation cli.
-  -p, --pushed <list>    add protected to default.(eg: -p uat,test1).
-  -c, --created <list>   use new list replace default(dangerous).(eg: -c uat,test1).
-  -h, --help             display help for command
+  -V, --version   output the version number
+  -u, --username  github username.
+  -p, --project   github project name.
+  -h, --help      display help for command
 ~~~
 
 ## license
