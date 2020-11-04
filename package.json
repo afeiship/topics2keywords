@@ -16,11 +16,12 @@
   "dependencies": {
     "@feizheng/next-absolute-package": "^1.0.6",
     "@feizheng/next-js-core2": "^2.6.0",
-    "@feizheng/next-unique": "^1.0.1",
+    "@feizheng/next-json-configuration": "^1.1.4",
+    "@feizheng/next-slice2str": "^1.0.2",
     "chalk": "^4.1.0",
     "commander": "^6.2.0",
-    "inquirer": "^7.3.3",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "ora": "^5.1.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -28,5 +29,16 @@
   "devDependencies": {
     "@feizheng/rake-git": "^1.2.1",
     "prettier": "^2.1.2"
-  }
+  },
+  "keywords": [
+    "github",
+    "topics",
+    "topic",
+    "tag",
+    "keywords",
+    "npm",
+    "nodejs",
+    "cli",
+    "command-line-tool"
+  ]
 }

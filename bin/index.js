@@ -1,23 +1,28 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
-const inquirer = require('inquirer');
 const chalk = require('chalk');
 
 // next packages:
 require('@feizheng/next-js-core2');
 require('@feizheng/next-absolute-package');
-require('@feizheng/next-unique');
+require('@feizheng/next-slice2str');
 
 const { version } = nx.absolutePackage();
 const program = new Command();
-const exec = require('child_process').execSync;
+const path = require('path');
 const fetch = require('node-fetch');
+const NxConfiguration = require('@feizheng/next-json-configuration');
+const exec = require('child_process').execSync;
+const ora = require('ora');
+
+const runtime = path.join(process.cwd(), 'package.json');
+const pkg = new NxConfiguration({ path: runtime });
+const spinner = ora('loading...');
 
 program.version(version);
 
 program
-  .option('-u, --username', 'github username.')
-  .option('-p, --project', 'github project name.')
+  .option('-u, --username <string>', 'github username(default: github username).')
   .parse(process.argv);
 
 nx.declare({
@@ -27,18 +32,28 @@ nx.declare({
       app.start();
     }
   },
+  properties: {
+    username() {
+      return program.username || exec('git config user.name').toString().trim();
+    }
+  },
   methods: {
-    init() {},
     start() {
-      console.log('start', this.queryTopics);
-      this.queryTopics((res) => {
-        console.log(res);
-        console.log('done');
+      spinner.start();
+      this.queryTopics().then((res) => {
+        pkg.update({ keywords: res.names });
+        spinner.succeed('done');
       });
     },
     queryTopics() {
-      return fetch('https://api.github.com/repos/afeiship/next-log/topics', {
+      const homepage = pkg.get('homepage');
+      const idx = homepage.indexOf(this.username);
+      const res = nx.slice2str(homepage, idx);
+      const apiPath = res[1];
+
+      return fetch(`https://api.github.com/repos/${apiPath}/topics`, {
         method: 'GET',
+        timeout: 100 * 1000,
         headers: {
           'Content-Type': 'application/vnd.api+json',
           Accept: 'application/vnd.github.mercy-preview+json'

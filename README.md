@@ -10,17 +10,25 @@
 
 ## usage
 ```shell
+# 1. install
 npm install -g @feizheng/topics2keywords
+
+# 2. go to your project
+cd ~/github/topics2keywords
+
+# 3. execute the cli
+t2k -u afeiship
+
+# 4. your package.json `keywords` key updated
 ```
 
 ~~~
 Usage: t2k [options]
 
 Options:
-  -V, --version   output the version number
-  -u, --username  github username.
-  -p, --project   github project name.
-  -h, --help      display help for command
+  -V, --version            output the version number
+  -u, --username <string>  github username(default: github username).
+  -h, --help               display help for command
 ~~~
 
 ## license
