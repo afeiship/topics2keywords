@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/topics2keywords",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sync github topics to npm keywords.",
   "homepage": "https://github.com/afeiship/topics2keywords",
   "author": {
@@ -20,6 +20,7 @@
     "@feizheng/next-slice2str": "^1.0.2",
     "chalk": "^4.1.0",
     "commander": "^6.2.0",
+    "git-url-parse": "^11.4.0",
     "node-fetch": "^2.6.1",
     "ora": "^5.1.0"
   },

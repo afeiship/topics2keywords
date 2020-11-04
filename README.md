@@ -17,7 +17,7 @@ npm install -g @feizheng/topics2keywords
 cd ~/github/topics2keywords
 
 # 3. execute the cli
-t2k -u afeiship
+t2k
 
 # 4. your package.json `keywords` key updated
 ```
@@ -26,9 +26,9 @@ t2k -u afeiship
 Usage: t2k [options]
 
 Options:
-  -V, --version            output the version number
-  -u, --username <string>  github username(default: github username).
-  -h, --help               display help for command
+  -V, --version  output the version number
+  -d, --debug    show debug info.
+  -h, --help     display help for command
 ~~~
 
 ## license

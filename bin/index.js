@@ -14,15 +14,18 @@ const fetch = require('node-fetch');
 const NxConfiguration = require('@feizheng/next-json-configuration');
 const exec = require('child_process').execSync;
 const ora = require('ora');
+const urlParse = require('git-url-parse');
 
 const runtime = path.join(process.cwd(), 'package.json');
 const pkg = new NxConfiguration({ path: runtime });
 const spinner = ora('loading...');
+const res = exec('git config --get remote.origin.url');
+const remoteUrl = res.toString().trim();
 
 program.version(version);
 
 program
-  .option('-u, --username <string>', 'github username(default: github username).')
+  .option('-d, --debug', 'show debug info.')
   .parse(process.argv);
 
 nx.declare({
@@ -33,6 +36,9 @@ nx.declare({
     }
   },
   properties: {
+    gitUrl() {
+      return urlParse(remoteUrl);
+    },
     username() {
       return program.username || exec('git config user.name').toString().trim();
     }
@@ -42,16 +48,14 @@ nx.declare({
       spinner.start();
       this.queryTopics().then((res) => {
         pkg.update({ keywords: res.names });
+        program.debug && console.log(res.names);
         spinner.succeed('done');
       });
     },
     queryTopics() {
-      const homepage = pkg.get('homepage');
-      const idx = homepage.indexOf(this.username);
-      const res = nx.slice2str(homepage, idx);
-      const apiPath = res[1];
+      const { name, owner } = this.gitUrl;
 
-      return fetch(`https://api.github.com/repos/${apiPath}/topics`, {
+      return fetch(`https://api.github.com/repos/${owner}/${name}/topics`, {
         method: 'GET',
         timeout: 100 * 1000,
         headers: {
