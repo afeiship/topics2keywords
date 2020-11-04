@@ -1,0 +1,32 @@
+{
+  "name": "@feizheng/topics2keywords",
+  "version": "1.0.9",
+  "description": "Sync github topics to npm keywords.",
+  "homepage": "https://github.com/afeiship/topics2keywords",
+  "author": {
+    "name": "afei",
+    "email": "1290657123@qq.com"
+  },
+  "bin": {
+    "t2k": "bin/index.js",
+    "topics2keywords": "bin/index.js"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@feizheng/next-absolute-package": "^1.0.6",
+    "@feizheng/next-js-core2": "^2.6.0",
+    "@feizheng/next-unique": "^1.0.1",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0",
+    "inquirer": "^7.3.3",
+    "node-fetch": "^2.6.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@feizheng/rake-git": "^1.2.1",
+    "prettier": "^2.1.2"
+  }
+}
