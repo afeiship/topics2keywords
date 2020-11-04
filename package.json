@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/topics2keywords",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "description": "Sync github topics to npm keywords.",
   "homepage": "https://github.com/afeiship/topics2keywords",
   "author": {
