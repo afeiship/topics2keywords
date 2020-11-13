@@ -1,6 +1,6 @@
 {
-  "name": "@feizheng/topics2keywords",
-  "version": "1.0.2",
+  "name": "@jswork/topics2keywords",
+  "version": "1.0.0",
   "description": "Sync github topics to npm keywords.",
   "homepage": "https://github.com/afeiship/topics2keywords",
   "author": {
@@ -28,8 +28,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@feizheng/rake-git": "^1.2.1",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "release-it": "^14.2.1"
   },
   "keywords": [
     "github",
@@ -44,5 +44,8 @@
     "t2k",
     "sync",
     "tags"
-  ]
+  ],
+  "scripts": {
+    "release": "release-it"
+  }
 }
