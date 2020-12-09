@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
-const chalk = require('chalk');
 
 // next packages:
-require('@feizheng/next-js-core2');
-require('@feizheng/next-absolute-package');
-require('@feizheng/next-slice2str');
+require('@jswork/next');
+require('@jswork/next-absolute-package');
+require('@jswork/next-slice2str');
 
 const { version } = nx.absolutePackage();
 const program = new Command();
 const path = require('path');
 const fetch = require('node-fetch');
-const NxConfiguration = require('@feizheng/next-json-configuration');
+const NxConfiguration = require('@jswork/next-json-configuration');
 const exec = require('child_process').execSync;
 const ora = require('ora');
 const urlParse = require('git-url-parse');
