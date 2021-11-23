@@ -14,6 +14,7 @@ const NxConfiguration = require('@jswork/next-json-configuration');
 const exec = require('child_process').execSync;
 const ora = require('ora');
 const urlParse = require('git-url-parse');
+const HttpsProxyAgent = require('https-proxy-agent');
 
 const runtime = path.join(process.cwd(), 'package.json');
 const pkg = new NxConfiguration({ path: runtime });
@@ -23,9 +24,7 @@ const remoteUrl = res.toString().trim();
 
 program.version(version);
 
-program
-  .option('-d, --debug', 'show debug info.')
-  .parse(process.argv);
+program.option('-d, --debug', 'show debug info.').parse(process.argv);
 
 nx.declare({
   statics: {
@@ -53,10 +52,10 @@ nx.declare({
     },
     queryTopics() {
       const { name, owner } = this.gitUrl;
-
       return fetch(`https://api.github.com/repos/${owner}/${name}/topics`, {
         method: 'GET',
         timeout: 100 * 1000,
+        agent: new HttpsProxyAgent('http://127.0.0.1:9090'),
         headers: {
           'Content-Type': 'application/vnd.api+json',
           Accept: 'application/vnd.github.mercy-preview+json'

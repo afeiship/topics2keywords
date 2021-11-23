@@ -21,6 +21,7 @@
     "chalk": "^4.1.0",
     "commander": "^6.2.0",
     "git-url-parse": "^11.4.0",
+    "https-proxy-agent": "^5.0.0",
     "node-fetch": "^2.6.1",
     "ora": "^5.1.0"
   },
