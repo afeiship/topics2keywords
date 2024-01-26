@@ -9,7 +9,6 @@ require('@jswork/next-slice2str');
 const { version } = nx.absolutePackage();
 const program = new Command();
 const path = require('path');
-const fetch = require('node-fetch');
 const NxConfiguration = require('@jswork/next-json-configuration');
 const exec = require('child_process').execSync;
 const ora = require('ora');
